@@ -81,13 +81,13 @@ IFS=$OLD_IFS
 # but this file doesn't store the day of the week and it would be a pain to figure it out from the date.
 
 # If the user exists, we take the output of the `last` command and pipe it to the `sort` command.
-# It will be sorted numerically, in reverse order, and by the second field, using ":" as delimiter.
+# It will be sorted numerically, in reverse order, and by the second field, using " " as delimiter.
 for user in "${usernames_array[@]}"; do
   if grep -q "^$user:" /etc/passwd; then
     count=$(last | grep "$user" | grep -c "Mon")
-    echo "$user: $count logins"
+    echo "$user $count logins"
   fi
-done | sort -t ":" -nrk 2
+done | sort -t " " -nrk 2
 
 # Also output the limitations of `last`
 last_output=$(last | grep "wtmp begins")
