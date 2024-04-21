@@ -113,9 +113,6 @@ echo "$total_files files of size $total_size KB"
 ###########################################################################################################################
 # REQ #3: Count the number of directories and print this number, also the names of directories with execution permissions.
 
-OLD_IFS=$IFS
-IFS=$'\n'
-
 total_dirs=0
 executable_dirs=""
 
@@ -131,8 +128,6 @@ for dir in "${directories_array[@]}"; do
         fi
     fi
 done
-
-IFS=$OLD_IFS
 
 echo "$total_dirs directories, of which $executable_dirs have execution permissions"
 
