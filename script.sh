@@ -85,7 +85,7 @@ IFS=$OLD_IFS
 for user in "${usernames_array[@]}"; do
   if grep -q "^$user:" /etc/passwd; then
     count=$(last | grep "$user" | grep -c "Mon")
-    echo "$user $count logins"
+    echo "$user: $count logins"
   fi
 done | sort -t ":" -nrk 2
 
